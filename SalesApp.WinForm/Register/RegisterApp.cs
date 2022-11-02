@@ -16,4 +16,9 @@ public partial class RegisterApp : Form
         LoginApp loginApp = new LoginApp();
         loginApp.Show();
     }
+
+    private void username_txb01_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
