@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Sales.Api.Domain.Entity;
+using Sales.Api.Domain.Repository.Abstract;
+using Sales.Api.Domain.Repository.GenericBaseRepository;
 
 namespace Sales.Api.Domain.Repository.Concrete;
-public class UserRepository
+
+public class UserRepository : RepositoryBase<User>, IUserRepository
 {
+    public UserRepository(DbContext context, IMapper mapper) : base(context, mapper)
+    {
+    }
 }

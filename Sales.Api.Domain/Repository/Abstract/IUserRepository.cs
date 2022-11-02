@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sales.Api.Domain.Entity;
+using Sales.Api.Domain.Repository.GenericBaseRepository;
 
 namespace Sales.Api.Domain.Repository.Abstract;
-internal interface IUserRepository
+
+public interface IUserRepository : IRepositoryBase<User>
 {
 }
