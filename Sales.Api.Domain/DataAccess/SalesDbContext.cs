@@ -1,10 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Sales.Api.Domain.Entity;
 
 namespace Sales.Api.Domain.DataAccess;
-public class SalesDbContext
+
+public class SalesDbContext : DbContext
 {
+
+    public DbSet<User> User { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            optionsBuilder.UseSqlServer(config.GetConnectionString("DatabaseConnectionString"));
+        }
+
+    }
 }
