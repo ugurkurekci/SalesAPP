@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesApp.WinForm", "SalesApp.WinForm\SalesApp.WinForm.csproj", "{5BEE98EC-7015-49CB-8764-EBC9DB6A08CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesApp.WinForm", "SalesApp.WinForm\SalesApp.WinForm.csproj", "{5BEE98EC-7015-49CB-8764-EBC9DB6A08CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.Api.Domain", "Sales.Api.Domain\Sales.Api.Domain.csproj", "{CD442D2A-631A-495B-901B-C94CD044664E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales.Api.Domain", "Sales.Api.Domain\Sales.Api.Domain.csproj", "{CD442D2A-631A-495B-901B-C94CD044664E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.Api.Business", "Sales.Api.Business\Sales.Api.Business.csproj", "{8936961B-EE55-4944-9772-5FAA4F78429B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales.Api.Business", "Sales.Api.Business\Sales.Api.Business.csproj", "{8936961B-EE55-4944-9772-5FAA4F78429B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4EFB63B8-B744-46EF-998B-BB4D6A1A92CF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
