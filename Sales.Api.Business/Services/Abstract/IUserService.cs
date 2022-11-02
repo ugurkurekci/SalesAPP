@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sales.Api.Business.Dto;
 
 namespace Sales.Api.Business.Services.Abstract;
-internal interface IUserService
+
+public interface IUserService
 {
+
+    string GetUserRegister(UserRegisterDto userRegisterDto);
+
+    string GetUserLogin(UserLoginDto userLoginDto);
+
 }
