@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sales.Api.Domain.Repository.Abstract;
 
 namespace Sales.Api.Domain.Repository;
-internal interface IUnitOfWorkRepository
+
+public interface IUnitOfWorkRepository : IDisposable
 {
+
+    public IUserRepository UserRepository { get; }
+
+    public int Complete();
+
 }
