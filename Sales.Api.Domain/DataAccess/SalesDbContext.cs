@@ -15,7 +15,7 @@ public class SalesDbContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
             IConfigurationRoot config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DatabaseConnectionString"));
+            optionsBuilder.UseSqlServer(config.GetConnectionString("ProjectDbString"));
         }
 
     }
