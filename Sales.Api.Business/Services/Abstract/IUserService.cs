@@ -5,8 +5,8 @@ namespace Sales.Api.Business.Services.Abstract;
 public interface IUserService
 {
 
-    string GetUserRegister(UserRegisterDto userRegisterDto);
+    Task<Result> GetUserRegister(UserRegisterDto userRegisterDto);
 
-    string GetUserLogin(UserLoginDto userLoginDto);
+    Task<Result> GetUserLogin(UserLoginDto userLoginDto);
 
 }

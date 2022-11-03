@@ -18,49 +18,62 @@ public class UserService : IUserService
         _mapper = mapper;
     }
 
-    public string GetUserLogin(UserLoginDto userLoginDto)
+    public async Task<Result> GetUserLogin(UserLoginDto userLoginDto)
     {
-        Task<User> getByID = GetByUsernameAndPassword(userLoginDto.Username, userLoginDto.Password);
+        var getByID = await GetByUsernameAndPassword(userLoginDto.Username, userLoginDto.Password);
         if (getByID == null)
         {
-            return "Giriş doğrulanmadı.Bilgilerinizi kontrol edip tekrar deneyiniz.";
+            return new Result
+            {
+                Message = "Giriş doğrulanmadı.Bilgilerinizi kontrol edip tekrar deneyiniz.",
+                Data = userLoginDto,
+                Success = false
+            };
         }
 
-        return "Giriş doğrulandı.";
+        return new Result
+        {
+            Message = "Giriş doğrulandı",
+            Data = userLoginDto,
+            Success = true
+        };
     }
 
-    public string GetUserRegister(UserRegisterDto userRegisterDto)
+    public async Task<Result> GetUserRegister(UserRegisterDto userRegisterDto)
     {
-
-
-        bool getByID = CheckByUsernameAndEmail(userRegisterDto.Username, userRegisterDto.Email);
         User usersModel = _mapper.Map<User>(userRegisterDto);
-        if (getByID)
+
+        User getByID = await CheckByUsernameAndEmail(usersModel.Username, usersModel.EMail);
+        if (getByID == null)
         {
 
-            _unitOfWorkRepository.UserRepository.Add(usersModel);
-            _unitOfWorkRepository.Complete();
+            await _unitOfWorkRepository.UserRepository.Add(usersModel);
+            return new Result
+            {
+                Message = "Kayıt başarıyla gerçekleştirildi.",
+                Data = userRegisterDto,
+                Success = true
+            };
         }
 
-        return "Girdiğiniz EMail ve Kullanıcı Adı ile üyelik eşleşmektedir. Bilgilerinizi kontrol edip tekrar deneyiniz.";
+        return new Result
+        {
+            Message = "Kayıt doğrulanmadı.Bilgilerinizi kontrol edip tekrar deneyiniz.",
+            Data = "[]",
+            Success = false
+        };
 
     }
 
-    private Task<User> GetByUsernameAndPassword(string username, string password)
+    private async Task<User> GetByUsernameAndPassword(string username, string password)
     {
-        return _unitOfWorkRepository.UserRepository.GetByFilter(x => x.Username == username && x.Password == password);
+        return await _unitOfWorkRepository.UserRepository.GetByFilter(x => x.Username == username && x.Password == password);
     }
 
-    private bool CheckByUsernameAndEmail(string username, string email)
+    private async Task<User> CheckByUsernameAndEmail(string username, string email)
     {
-        Task<User> getbyID = _unitOfWorkRepository.UserRepository.GetByFilter(x => x.Username == username || x.EMail == email);
-
-        if (getbyID == null)
-        {
-            return true;
-        }
-        return false;
-
+        User getbyID = await _unitOfWorkRepository.UserRepository.GetByFilter(x => x.Username == username || x.EMail == email);
+        return getbyID;
     }
 
 }
