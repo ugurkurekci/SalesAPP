@@ -6,23 +6,19 @@ namespace Sales.Api.Domain.Repository;
 public class UnitOfWorkRepository : IUnitOfWorkRepository
 {
 
-    public readonly SalesDbContext _salesDbContext;
+    private readonly SalesDbContext _context;
 
-    public UnitOfWorkRepository(SalesDbContext salesDbContext, IUserRepository userRepository)
+    public UnitOfWorkRepository(IUserRepository userRepository, SalesDbContext context)
     {
-        _salesDbContext = salesDbContext;
         UserRepository = userRepository;
+        _context = context;
     }
 
     public IUserRepository UserRepository { get; }
 
-    public int Complete()
-    {
-        return _salesDbContext.SaveChanges();
-    }
-
     public void Dispose()
     {
-        _salesDbContext.Dispose();
+        _context.Dispose();
     }
+
 }

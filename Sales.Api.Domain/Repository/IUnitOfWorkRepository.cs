@@ -7,6 +7,4 @@ public interface IUnitOfWorkRepository : IDisposable
 
     public IUserRepository UserRepository { get; }
 
-    public int Complete();
-
 }
