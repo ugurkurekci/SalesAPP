@@ -1,7 +1,12 @@
-﻿namespace Sales.Api.Domain.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Sales.Api.Domain.Entity;
 
 public class User : EntityBase
 {
+
+    [Key]
+    public int ID { get; set; }
 
     public string Username { get; set; }
 
