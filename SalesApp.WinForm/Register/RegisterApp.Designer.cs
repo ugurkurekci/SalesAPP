@@ -64,6 +64,7 @@ partial class RegisterApp
             this.login_button01.TabIndex = 15;
             this.login_button01.Text = "Register";
             this.login_button01.UseVisualStyleBackColor = false;
+            this.login_button01.Click += new System.EventHandler(this.login_button01_Click);
             // 
             // panel_fiil
             // 
